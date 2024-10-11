@@ -1,0 +1,41 @@
+body {
+    background: linear-gradient(to right, #ff5f6d, #ffc371); /* สีพื้นหลังไล่เฉดสี */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+.message-container {
+    background: rgba(0, 0, 0, 0.7); /* กล่องข้อความสีดำใส */
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ffdddd;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #ffffff;
+    color: #ff5f6d;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+    background-color: #ff5f6d;
+    color: #ffffff;
+}

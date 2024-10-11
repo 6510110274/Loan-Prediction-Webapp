@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Status Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Loan Form</h2>
+        <form id="loanForm" method="POST" onsubmit="return validateForm(event)">
+            <label for="gender">Gender (เพศ)</label>
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected>โปรดเลือก</option>
+                <option value="0">Female (เพศหญิง)</option>
+                <option value="1">Male (เพศชาย)</option>
+            </select>
+
+            <label for="married">Married (แต่งงาน)</label>
+            <select id="married" name="married" required>
+                <option value="" disabled selected>โปรดเลือก</option>
+                <option value="0">No (ไม่ ฉันยังไม่แต่งงาน)</option>
+                <option value="1">Yes (ใช่ ฉันแต่งงานแล้ว)</option>
+            </select>
+
+            <label for="dependents">Dependents (จำนวนผู้พึ่งพา)</label>
+            <select id="dependents" name="dependents" required>
+                <option value="" disabled selected>โปรดเลือก</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">3+</option>
+            </select>
+
+            <label for="education">Education (การศึกษา)</label>
+            <select id="education" name="education" required>
+                <option value="" disabled selected>โปรดเลือก</option>
+                <option value="0">Not Graduate (ไม่จบการศึกษาระดับบัณฑิตศึกษา)</option>
+                <option value="1">Graduate (จบการศึกษาระดับบัณฑิตศึกษา)</option>
+            </select>
+
+            <label for="self_employed">Self Employed (เป็นผู้ประกอบอาชีพอิสระ)</label>
+            <select id="self_employed" name="self_employed" required>
+                <option value="" disabled selected>โปรดเลือก</option>
+                <option value="0">No (ไม่)</option>
+                <option value="1">Yes (ใช่)</option>
+            </select>
+
+            <label for="applicant_income">Applicant Income (รายได้ผู้กู้) บาท</label>
+            <input type="number" id="applicant_income" name="applicant_income" required>
+
+            <label for="coapplicant_income">Coapplicant Income (รายได้ผู้กู้ร่วม) บาท</label>
+            <input type="number" id="coapplicant_income" name="coapplicant_income" required>
+
+            <label for="loan_amount">Loan Amount (เงินกู้ต้องการกู้) x 1000 บาท</label>
+            <input type="number" id="loan_amount" name="loan_amount" required>
+
+            <label for="loan_amount_term">Loan Amount Term (จำนวนงวดที่ต้องการกู้) งวด</label>
+            <input type="number" id="loan_amount_term" name="loan_amount_term" required>
+
+            <label for="credit_history">Credit History (เคยกู้มาก่อนหรือไม่)</label>
+            <select id="credit_history" name="credit_history" required>
+                <option value="" disabled selected>โปรดเลือก</option>
+                <option value="0">No (ไม่ ฉันไม่เคยมีประวัติการกู้)</option>
+                <option value="1">Yes (ใช่ ฉันเคยกู้ยืมสินเชื่อมาก่อน)</option>
+            </select>
+
+            <label for="property_area">Property Area พื้นที่อยู่อาศัย</label>
+            <select id="property_area" name="property_area" required>
+                <option value="" disabled selected>โปรดเลือก</option>
+                <option value="0">Rural (ชนบท)</option>
+                <option value="1">Semiurban (กึ่งเมือง)</option>
+                <option value="2">Urban (ในเมือง)</option>
+            </select>
+
+            <input type="submit" value="Submit"> <!-- เปลี่ยนเป็น submit -->
+        </form>
+
+        <div class="loading-spinner" id="loadingSpinner" style="display: none;"></div> <!-- แสดงส่วนประกอบการโหลด -->
+    </div>
+
+    <script>
+        function validateForm(event) {
+            if (!event.target.checkValidity()) { // ตรวจสอบการตรวจสอบของ HTML5
+                alert('โปรดกรอกข้อมูลให้ครบถ้วนและถูกต้องในทุกฟิลด์');
+                return false; // ยกเลิกการส่งฟอร์มถ้าข้อมูลไม่ถูกต้อง
+            }
+            showLoading(event);
+            return true; // อนุญาตให้ส่งฟอร์มถ้าข้อมูลครบถ้วน
+        }
+
+        function showLoading(event) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์มทันทีเมื่อกด Submit
+            document.getElementById('loanForm').style.display = 'none';
+            document.getElementById('loadingSpinner').style.display = 'block';
+
+            // หน่วงเวลา 1.5 วินาทีก่อนทำการส่งฟอร์ม
+            setTimeout(function () {
+                document.getElementById('loanForm').submit(); // ส่งฟอร์มหลังจากหน่วงเวลา
+            }, 1500); // หน่วงเวลา 1500 มิลลิวินาที (1.5 วินาที)
+        }
+    </script>
+</body>
+</html>

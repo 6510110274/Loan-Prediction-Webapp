@@ -1,0 +1,107 @@
+body {
+    background: url('https://images.pexels.com/photos/534229/pexels-photo-534229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.form-container {
+    background: rgba(210, 230, 210, 1);
+    border-radius: 12px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    padding: 30px 50px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.form-container:hover {
+    transform: scale(1.05);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333333;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    text-align: left;
+    color: #555555;
+    font-weight: bold;
+}
+
+select, input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+select:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: #ff5722;
+    box-shadow: 0 0 15px rgba(255, 87, 34, 0.6);
+    background-color: #fff3e0;
+    transform: scale(1.05);
+    animation: wiggle 0.3s ease-in-out;
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+input[type="submit"] {
+    background-color: #2575fc;
+    color: #ffffff;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+input[type="submit"]:hover {
+    background-color: #6a11cb;
+    transform: translateY(-3px);
+}
+
+input[type="submit"]:active {
+    background-color: #4c3f91;
+    transform: translateY(1px);
+}
+
+.loading-spinner {
+    display: none;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
